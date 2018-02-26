@@ -1,0 +1,9 @@
+CREATE TABLE project.add (
+zipcode int,
+average_income varchar(500),
+zipcode1 int,
+education int,
+zipcode2 int,
+population int)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY "\t";

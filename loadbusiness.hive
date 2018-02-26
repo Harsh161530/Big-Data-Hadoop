@@ -1,0 +1,8 @@
+CREATE TABLE project.bus (
+zipcode int,
+establishments int)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'Business establishments data.txt' INTO TABLE project.bus;
+

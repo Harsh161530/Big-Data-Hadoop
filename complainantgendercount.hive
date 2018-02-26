@@ -1,0 +1,5 @@
+set hive.cli.print.header = TRUE;
+
+SELECT zip_code, complainant_gender, COUNT(DISTINCT(incident_number_wo_year)) 
+FROM project.pincidents
+GROUP BY zip_code, complainant_gender;

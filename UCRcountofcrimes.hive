@@ -1,0 +1,4 @@
+set hive.cli.print.header = TRUE;
+
+SELECT zip_code, ucr_offense_description , COUNT(DISTINCT(incident_number_wo_year)) AS i FROM project.pincidents 
+GROUP BY zip_code,ucr_offense_description ORDER BY i;

@@ -1,0 +1,8 @@
+set hive.cli.print.header = TRUE;
+
+SELECT a.zip_code, a.UCR_offense_description, a.watch, a.est , COUNT(DISTINCT(a.incident_number_wo_year)) FROM 
+(SELECT pincidents.* , bus.establishments AS est FROM project.pincidents INNER JOIN project.bus ON
+pincidents.zip_code = bus.zipcode) AS a
+WHERE a.day1_of_the_week IN ('Mon','Tue','Wed','Thu','Fri')
+GROUP BY a.zip_code, a.UCR_offense_description,a.watch,a.est
+ORDER BY a.est DESC;

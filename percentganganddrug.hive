@@ -1,0 +1,10 @@
+set hive.cli.print.header = TRUE;
+
+SELECT a.zip_code, g/t AS gang , d/t AS drug FROM
+((SELECT zip_code , COUNT(DISTINCT(incident_number_wo_year)) AS g FROM project.pincidents WHERE gang_related_offense = 'Yes' GROUP BY zip_code) AS a 
+FULL OUTER JOIN 
+(SELECT zip_code , COUNT(DISTINCT(incident_number_wo_year)) AS d FROM project.pincidents WHERE drug_related_incident = 'Yes' GROUP BY zip_code) AS b
+ON a.zip_code = b.zip_code
+FULL OUTER JOIN 
+(SELECT zip_code , COUNT(DISTINCT(incident_number_wo_year)) AS t FROM project.pincidents GROUP BY zip_code) AS c
+ON a.zip_code = c.zip_code); 

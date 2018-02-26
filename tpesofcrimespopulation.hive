@@ -1,0 +1,15 @@
+set hive.cli.print.header =  TRUE;
+
+
+SELECT a.zip_code, a.UCR_offense_description, COUNT(DISTINCT(a.incident_number_wo_year)) FROM
+(SELECT pincidents.* , add.population FROM project.pincidents INNER JOIN project.add
+ON pincidents.zip_code = add.zipcode) AS a
+WHERE a.population > 10185
+GROUP BY a.zip_code, a.UCR_offense_description;
+
+SELECT a.zip_code, a.UCR_offense_description, COUNT(DISTINCT(a.incident_number_wo_year)) FROM
+(SELECT pincidents.* , add.population FROM project.pincidents INNER JOIN project.add
+ON pincidents.zip_code = add.zipcode) AS a
+WHERE a.population < 10185
+GROUP BY a.zip_code, a.UCR_offense_description;
+

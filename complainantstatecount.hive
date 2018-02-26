@@ -1,0 +1,3 @@
+set hive.cli.print.header = TRUE;
+
+SELECT complainant_state,COUNT(DISTINCT(incident_number_wo_year)) AS i FROM project.pincidents GROUP BY complainant_state ORDER BY i;

@@ -1,0 +1,8 @@
+CREATE TABLE project.temp (
+zipcode int,
+date1 varchar(100),
+temp int)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'pythonparse.txt' INTO TABLE project.temp;

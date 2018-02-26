@@ -1,0 +1,3 @@
+set hive.cli.print.header = TRUE;
+
+SELECT zip_code,watch, COUNT(DISTINCT(incident_number_wo_year)) FROM project.pincidents GROUP BY zip_code, watch;

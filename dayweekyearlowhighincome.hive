@@ -1,0 +1,14 @@
+set hive.cli.print.header = TRUE;
+
+SELECT a.zip_code , a.year1_of_occurrence, a.day1_of_the_week, COUNT(DISTINCT(a.incident_number_wo_year)) FROM
+(SELECT pincidents.* , add.average_income FROM project.pincidents INNER JOIN project.add 
+ON pincidents.zip_code = add.zipcode) AS a
+WHERE a.average_income > '55,653'
+GROUP BY a.zip_code, a.year1_of_occurrence, a.day1_of_the_week;
+
+SELECT a.zip_code , a.year1_of_occurrence, a.day1_of_the_week, COUNT(DISTINCT(a.incident_number_wo_year)) FROM
+(SELECT pincidents.* , add.average_income FROM project.pincidents INNER JOIN project.add
+ON pincidents.zip_code = add.zipcode) AS a
+WHERE a.average_income < '55,653'
+GROUP BY a.zip_code, a.year1_of_occurrence, a.day1_of_the_week;
+ 

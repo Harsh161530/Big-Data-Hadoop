@@ -1,0 +1,5 @@
+set hive.cli.print.header = TRUE;
+
+SELECT zip_code, year1_of_occurrence, day1_of_the_week ,COUNT(DISTINCT(incident_number_wo_year))
+FROM project.pincidents
+GROUP BY zip_code, year1_of_occurrence,day1_of_the_week;

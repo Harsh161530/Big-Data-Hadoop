@@ -1,0 +1,3 @@
+USE project;
+LOAD DATA LOCAL INPATH 'Police_Incidents.txt' INTO TABLE project.pincidents;
+
